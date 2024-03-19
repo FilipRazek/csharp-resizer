@@ -5,12 +5,11 @@ using SixLabors.ImageSharp.Processing;
 
 class ImageResizer
 {
-
-    private readonly IFileWalker fileWalker = new LocalDirectoryWalker();
-
-    public void ResizeImages(string inputDir, string outputDir, int widthFactor, int heightFactor)
+    public static void ResizeImages(string inputDir, string outputDir, int widthFactor, int heightFactor)
     {
-        fileWalker.Walk(inputDir, (inputPath) => ResizeImageToDirectory(inputPath, outputDir, widthFactor, heightFactor));
+        string[] fileEntries = Directory.GetFiles(inputDir);
+        foreach (string fileName in fileEntries)
+            ResizeImageToDirectory(fileName, outputDir, widthFactor, heightFactor);
     }
 
     private static void ResizeImageToDirectory(string inputPath, string outputDir, int widthFactor, int heightFactor)
