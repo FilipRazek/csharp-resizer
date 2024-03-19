@@ -1,6 +1,6 @@
 namespace sample1;
 
-class DirectoryWalker
+class LocalDirectoryWalker: IFileWalker
 {
     public void Walk(string inputDir, Action<string> processFile)
     {
