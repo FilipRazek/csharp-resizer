@@ -8,8 +8,9 @@ class ImageResizer
     public static void ResizeImages(string inputDir, string outputDir, int widthFactor, int heightFactor)
     {
         string[] fileEntries = Directory.GetFiles(inputDir);
-        foreach (string fileName in fileEntries)
-            ResizeImageToDirectory(fileName, outputDir, widthFactor, heightFactor);
+        Parallel.ForEach(fileEntries, fileName =>
+            ResizeImageToDirectory(fileName, outputDir, widthFactor, heightFactor)
+        );
     }
 
     private static void ResizeImageToDirectory(string inputPath, string outputDir, int widthFactor, int heightFactor)
