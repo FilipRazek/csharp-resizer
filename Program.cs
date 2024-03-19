@@ -8,10 +8,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        using (Image image = Image.Load(@"input\img1.jpg"))
-        {
-            image.Mutate(x => x.Resize(image.Width / 2, image.Height / 2));
-            image.Save(@"output\img1.jpg");
-        }
+        ImageResizer.ResizeImages("input", "output", 1, 3);
     }
 }
